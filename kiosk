@@ -1,3 +1,4 @@
+#이전 코드를 복사, 붙여넣기 하여 이어서 작성하세요.
 priceList = {'불고기버거': 3200, '새우버거': 4000, '치즈버거': 2800,
              '스프라이트': 1500, '우유': 1200, '콜라': 1500}
 
@@ -10,10 +11,12 @@ def setMenu():
 
 totalPrice = 0
 
+#---여기부터 작성하세요.
 burgers = ['불고기버거', '새우버거', '치즈버거']
 drinks = ['스프라이트', '우유', '콜라']
 orderList = {}
 
+# 실행 영역
 print('D.Burger 셀프 주문 시스템입니다.')
 sumon = 0
 
@@ -26,7 +29,7 @@ while True:
             print("없는 메뉴입니다.")
         else:
             num1 = int(input("수량:"))
-            orderList[burger] = orderList.get(burger,0) + num1
+            orderList[burger] = orderList.get(burger, 0) + num1
             burgerCount += num1
             sumon += priceList[burger] * num1
             print(f"{burger} 추가 완료")
@@ -38,7 +41,7 @@ while True:
             print("없는 메뉴입니다.")
         else:
             num2 = int(input("수량:"))
-            orderList[drink] = orderList.get(drink,0) + num2
+            orderList[drink] = orderList.get(drink, 0) + num2
             drinkCount += num2
             sumon += priceList[drink] * num2
             print(f"{drink} 추가 완료")
@@ -71,19 +74,25 @@ while True:
 
             if what_broke not in orderList:
                 print("해당 메뉴가 없습니다.")
-                continue
+            else:
+                how_broke = int(input("취소할 수량을 입력하세요.: "))
 
-            how_broke = int(input("취소할 수량을 입력하세요.: "))
-            orderList[what_broke] -= how_broke
+                orderList[what_broke] -= how_broke
+                sumon -= priceList[what_broke] * how_broke
 
-            if orderList[what_broke] <= 0:
-                del orderList[what_broke]
+                if what_broke in burgers:
+                    burgerCount -= how_broke
+                elif what_broke in drinks:
+                    drinkCount -= how_broke
 
-            print(f"해당 메뉴 {how_broke}개 취소되었습니다.")
-            print("주문 내역과 총 금액을 확인해 주세요.")
-            print(f"주문 내역: {orderList}")
-            print(f"세트 할인 금액: {discount}")
-            print(f"총 금액: {sumon}원")
+                if orderList[what_broke] <= 0:
+                    del orderList[what_broke]
+
+                print(f"해당 메뉴 {how_broke}개 취소되었습니다.")
+                print("주문 내역과 총 금액을 확인해 주세요.")
+                print(f"주문 내역: {orderList}")
+                print(f"세트 할인 금액: {discount}")
+                print(f"총 금액: {sumon}원")
 
     else:
         print("다시 입력해 주세요.")
