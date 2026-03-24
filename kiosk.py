@@ -1,5 +1,7 @@
-priceList = {'불고기버거': 3200, '새우버거': 4000, '치즈버거': 2800,
-             '스프라이트': 1500, '우유': 1200, '콜라': 1500}
+#hello! so this is the second (personal) and the first project that i made in my academy
+#translated to english at mar 24 11:01 pm
+priceList = {'Bulgogi Burger': 3200, 'Shrimp Burger': 4000, 'Cheese Burger': 2800,
+             'Sprite': 1500, 'Milk': 1200, 'Cola': 1500}
 
 burgerCount = 0
 drinkCount = 0   
@@ -11,69 +13,69 @@ def setMenu():
 totalPrice = 0
 
 
-burgers = ['불고기버거', '새우버거', '치즈버거']
-drinks = ['스프라이트', '우유', '콜라']
+burgers = ['Bulgogi Burger', 'Shrimp Burger', 'Cheese Burger']
+drinks = ['Sprite', 'Milk', 'Cola']
 orderList = {}
 
-print('D.Burger 셀프 주문 시스템입니다.')
+print('D.Burger Self Order System')
 sumon = 0
 
 while True:
-    orderType = int(input('메뉴 타입을 번호로 입력하세요 (버거:1/음료:2/종료:3): '))
+    orderType = int(input('Enter menu type (Burger:1/Drink:2/Exit:3): '))
  
     if orderType == 1:
-        burger = input("추가할 버거:")
+        burger = input("Add burger:")
         if burger not in burgers:
-            print("없는 메뉴입니다.")
+            print("Menu not available.")
         else:
-            num1 = int(input("수량:"))
+            num1 = int(input("Quantity:"))
             orderList[burger] = orderList.get(burger, 0) + num1
             burgerCount += num1
             sumon += priceList[burger] * num1
-            print(f"{burger} 추가 완료")
-            print(f"현재 장바구니: {orderList}")
+            print(f"{burger} added")
+            print(f"Current cart: {orderList}")
 
     elif orderType == 2:
-        drink = input("추가할 음료:")
+        drink = input("Add drink:")
         if drink not in drinks:
-            print("없는 메뉴입니다.")
+            print("Menu not available.")
         else:
-            num2 = int(input("수량:"))
+            num2 = int(input("Quantity:"))
             orderList[drink] = orderList.get(drink, 0) + num2
             drinkCount += num2
             sumon += priceList[drink] * num2
-            print(f"{drink} 추가 완료")
-            print(f"현재 장바구니: {orderList}")
+            print(f"{drink} added")
+            print(f"Current cart: {orderList}")
 
     elif orderType == 3:
         print("-------------------------")
-        print("주문을 종료합니다.")
-        print("주문 내역과 총 금액을 확인해 주세요.")
-        print(f"주문 내역: {orderList}")
+        print("Order finished.")
+        print("Check your order and total price.")
+        print(f"Order details: {orderList}")
 
         if sumon >= 15000:
-            print("치즈스틱을 드립니다!")
-            orderList['치즈스틱'] = 1
+            print("You get cheese sticks!")
+            orderList['Cheese Sticks'] = 1
 
         dc = setMenu()
         discount = dc * 500
         sumon -= discount
 
-        print(f"세트 할인 금액: {discount}")
-        print(f"총 금액: {sumon}원")
+        print(f"Set discount: {discount}")
+        print(f"Total price: {sumon} won")
 
-        name = input("주문 내역 수정: y / 주문 최종 완료: n: ")
+        name = input("Edit order: y / Finalize order: n: ")
 
         if name == 'n':
             break
 
         elif name == 'y':
-            what_broke = input("취소할 메뉴를 입력하세요.: ")
+            what_broke = input("Enter item to cancel: ")
 
             if what_broke not in orderList:
-                print("해당 메뉴가 없습니다.")
+                print("Item not found.")
             else:
-                how_broke = int(input("취소할 수량을 입력하세요.: "))
+                how_broke = int(input("Enter quantity to cancel: "))
 
                 orderList[what_broke] -= how_broke
                 sumon -= priceList[what_broke] * how_broke
@@ -86,13 +88,11 @@ while True:
                 if orderList[what_broke] <= 0:
                     del orderList[what_broke]
 
-                print(f"해당 메뉴 {how_broke}개 취소되었습니다.")
-                print("주문 내역과 총 금액을 확인해 주세요.")
-                print(f"주문 내역: {orderList}")
-                print(f"세트 할인 금액: {discount}")
-                print(f"총 금액: {sumon}원")
+                print(f"{how_broke} of {what_broke} cancelled.")
+                print("Check your order and total price.")
+                print(f"Order details: {orderList}")
+                print(f"Set discount: {discount}")
+                print(f"Total price: {sumon} won")
 
     else:
-        print("다시 입력해 주세요.")
-#end for now
-#maube
+        print("Please enter again.")
