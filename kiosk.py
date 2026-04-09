@@ -2,6 +2,7 @@
 #translated to english at mar 24 11:01 pm
 priceList = {'Bulgogi Burger': 3200, 'Shrimp Burger': 4000, 'Cheese Burger': 2800,
              'Sprite': 1500, 'Milk': 1200, 'Cola': 1500}
+#edited in viscose byw
 
 burgerCount = 0
 drinkCount = 0   
